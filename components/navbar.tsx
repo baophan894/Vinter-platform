@@ -15,6 +15,8 @@ export function Navbar() {
     { href: "/checklist", label: "Checklist" },
     { href: "/cv-scanner", label: "CV Scanner" },
     { href: "/forum", label: "Forum" },
+    { href: "/cv-maker", label: "CV Maker" },
+
   ]
 
   return (
@@ -46,14 +48,14 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center space-x-4">
+          {/* <div className="hidden md:flex items-center space-x-4">
             <Button variant="ghost" asChild>
               <Link href="/login">Đăng nhập</Link>
             </Button>
             <Button asChild className="bg-blue-900 hover:bg-blue-800">
               <Link href="/register">Đăng ký</Link>
             </Button>
-          </div>
+          </div> */}
 
           {/* Mobile Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
