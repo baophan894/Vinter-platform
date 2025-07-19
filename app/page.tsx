@@ -286,7 +286,7 @@ export default function HomePage() {
               size="lg"
               className="bg-white text-blue-900 hover:bg-blue-50 px-8 py-4 text-lg font-semibold"
             >
-              <Link href="/mock-interview">
+              <Link href="/login">
                 Bắt đầu ngay <Zap className="ml-2 h-5 w-5" />
               </Link>
             </Button>
