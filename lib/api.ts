@@ -1,11 +1,11 @@
 // API client utilities
 import { VapiAssistantService, CreateAssistantRequest } from './vapi-assistant'
 
-const API_BASE_URL = "/api" // Use Next.js API routes
+const API_BASE_URL = "api" // Use Next.js API routes
 
 export class APIClient {
   private static async request(endpoint: string, options: RequestInit = {}) {
-    const url = `/${API_BASE_URL}${endpoint}`
+    const url = `http://localhost:5010${endpoint}`
     const config: RequestInit = {
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export class APIClient {
 
       console.log('🎯 Calling your interview-session API for question generation...')
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${API_BASE_URL}/ai/interview-session`, {
+      const response = await fetch(`/${API_BASE_URL}/ai/interview-session`, {
         method: "POST",
         body: formData,
       })
