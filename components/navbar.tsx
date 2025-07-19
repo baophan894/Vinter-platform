@@ -15,6 +15,8 @@ export function Navbar() {
     { href: "/checklist", label: "Checklist" },
     { href: "/cv-scanner", label: "CV Scanner" },
     { href: "/forum", label: "Forum" },
+    { href: "/profile", label: "Hồ sơ" },
+  
   ]
 
   return (
@@ -30,7 +32,7 @@ export function Navbar() {
             <div className="w-8 h-8 bg-blue-900 rounded-lg flex items-center justify-center">
               <Bot className="h-5 w-5 text-white" />
             </div>
-            <span className="text-xl font-bold text-blue-900">InterviewAI</span>
+            <span className="text-xl font-bold text-blue-900">Vinter</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -75,11 +77,8 @@ export function Navbar() {
                   </Link>
                 ))}
                 <div className="pt-4 border-t space-y-2">
-                  <Button variant="ghost" asChild className="w-full justify-start">
-                    <Link href="/login">Đăng nhập</Link>
-                  </Button>
                   <Button asChild className="w-full bg-blue-900 hover:bg-blue-800">
-                    <Link href="/register">Đăng ký</Link>
+                    <Link href="/login">Đăng nhập</Link>
                   </Button>
                 </div>
               </div>
