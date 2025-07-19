@@ -3,8 +3,8 @@ export class VapiAIClient {
   // Create interview assistant configuration for web calls
   static createInterviewAssistant(candidateName: string, questions: string[]) {
     return {
-      name: `Interview Assistant for ${candidateName}`,
-      firstMessage: `Xin chào ${candidateName}! Tôi là AI interviewer sẽ phỏng vấn bạn hôm nay. Chúng ta sẽ có ${questions.length} câu hỏi. Bạn đã sẵn sàng chưa?`,
+      name: `Interview-${candidateName}`,
+      firstMessage: `Hello ${candidateName}! I'm your AI interviewer for today's session. We'll be going through ${questions.length} questions together. Are you ready to begin?`,
       model: {
         provider: "openai",
         model: "gpt-4o",
@@ -12,42 +12,45 @@ export class VapiAIClient {
         messages: [
           {
             role: "system",
-            content: `Bạn là một AI interviewer chuyên nghiệp đang phỏng vấn ứng viên tên ${candidateName}.
+            content: `You are a professional AI interviewer conducting an interview with candidate ${candidateName}.
 
-NHIỆM VỤ:
-- Tiến hành phỏng vấn một cách tự nhiên và thân thiện
-- Hỏi từng câu một theo thứ tự
-- Lắng nghe và phản hồi phù hợp
-- Chuyển sang câu hỏi tiếp theo sau khi ứng viên trả lời xong
-- Kết thúc phỏng vấn khi hết câu hỏi
+YOUR MISSION:
+- Conduct the interview naturally and professionally
+- Ask questions one by one in order
+- Listen carefully and provide appropriate responses
+- Move to the next question after the candidate finishes answering
+- End the interview when all questions are completed
 
-CÁC CÂU HỎI PHỎNG VẤN:
+INTERVIEW QUESTIONS:
 ${questions.map((q, index) => `${index + 1}. ${q}`).join("\n")}
 
-HƯỚNG DẪN:
-- Bắt đầu bằng lời chào thân thiện
-- Hỏi từng câu một cách tự nhiên
-- Có thể hỏi thêm để làm rõ nếu cần
-- Phản hồi tích cực với câu trả lời
-- Sử dụng tiếng Việt tự nhiên
-- Giữ giọng điệu chuyên nghiệp nhưng thân thiện
-- Mỗi phản hồi không quá 50 từ
+GUIDELINES:
+- Start with a friendly greeting
+- Ask each question naturally and clearly
+- Ask follow-up questions for clarification if needed
+- Provide positive feedback on answers
+- Use natural, professional English
+- Keep responses concise (under 50 words)
+- Maintain a professional yet friendly tone
+- Allow natural pauses for the candidate to think
+- Show genuine interest in their responses
 
-Hãy bắt đầu cuộc phỏng vấn một cách tự nhiên!`,
+Please begin the interview in a natural and engaging way!`,
           },
         ],
       },
       voice: {
         provider: "11labs",
         voiceId: "pNInz6obpgDQGcFmaJgB", // Adam voice - professional
-        stability: 0.5,
-        similarityBoost: 0.8,
-        style: 0.2,
+        stability: 0.6,
+        similarityBoost: 0.9,
+        style: 0.3,
         useSpeakerBoost: true,
+        optimizeStreamingLatency: 3,
       },
       recordingEnabled: true,
-      endCallMessage: `Cảm ơn ${candidateName} đã tham gia phỏng vấn. Chúc bạn may mắn!`,
-      endCallPhrases: ["kết thúc", "tạm biệt", "cảm ơn", "bye", "goodbye", "hoàn thành"],
+      endCallMessage: `Thank you ${candidateName} for participating in today's interview. Best of luck with your application!`,
+      endCallPhrases: ["thank you", "goodbye", "bye", "end interview", "that's all", "complete"],
       maxDurationSeconds: 1800, // 30 minutes max
       silenceTimeoutSeconds: 30,
       responseDelaySeconds: 1,

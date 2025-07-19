@@ -23,6 +23,10 @@ interface Props {
   sessionId: string
   candidateName: string
   onComplete: () => void
+  onEvaluationReady?: (data: {
+    conversationHistory: Array<{role: 'user' | 'assistant', text: string, timestamp: Date}>
+    duration: number
+  }) => void
 }
 
 type CallStatus = "idle" | "connecting" | "ringing" | "connected" | "ended" | "error"
@@ -33,7 +37,7 @@ declare global {
   }
 }
 
-export function PhoneCallInterface({ questions, sessionId, candidateName, onComplete }: Props) {
+export function PhoneCallInterface({ questions, sessionId, candidateName, onComplete, onEvaluationReady }: Props) {
   const [callStatus, setCallStatus] = useState<CallStatus>("idle")
   const [isMuted, setIsMuted] = useState(false)
   const [isRecording, setIsRecording] = useState(false)
@@ -44,6 +48,7 @@ export function PhoneCallInterface({ questions, sessionId, candidateName, onComp
   >([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const [startTime, setStartTime] = useState<Date | null>(null)
 
   const callTimerRef = useRef<NodeJS.Timeout | null>(null)
   const vapiRef = useRef<any>(null)
@@ -72,12 +77,31 @@ export function PhoneCallInterface({ questions, sessionId, candidateName, onComp
 
       vapiRef.current.on("call-start", () => {
         setCallStatus("connected")
+        setStartTime(new Date())
         startCallTimer()
       })
 
       vapiRef.current.on("call-end", () => {
         setCallStatus("ended")
         stopCallTimer()
+        
+        // Prepare evaluation data
+        if (onEvaluationReady && startTime) {
+          const endTime = new Date()
+          const duration = Math.floor((endTime.getTime() - startTime.getTime()) / 1000)
+          
+          const conversationHistory = transcript.map(t => ({
+            role: t.speaker === 'user' ? 'user' as const : 'assistant' as const,
+            text: t.message,
+            timestamp: t.timestamp
+          }))
+          
+          onEvaluationReady({
+            conversationHistory,
+            duration
+          })
+        }
+        
         handleCallEnd()
       })
 

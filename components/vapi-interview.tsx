@@ -187,7 +187,7 @@ export function VapiInterview({ questions, sessionId, candidateName, onComplete 
   // Create assistant configuration
   const createAssistant = () => {
     return {
-      name: `Interview Assistant for ${candidateName}`,
+      name: `Interview-${candidateName}`,
       firstMessage: `Xin chào ${candidateName}! Tôi là AI interviewer sẽ phỏng vấn bạn hôm nay. Chúng ta sẽ có ${questions.length} câu hỏi. Bạn đã sẵn sàng chưa?`,
       model: {
         provider: "openai",

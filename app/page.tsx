@@ -115,7 +115,7 @@ export default function HomePage() {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -124,14 +124,30 @@ export default function HomePage() {
             <motion.div variants={fadeInUp}>
               <Card className="h-full hover:shadow-lg transition-shadow duration-300 border-blue-100">
                 <CardHeader className="text-center pb-4">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Bot className="h-8 w-8 text-blue-900" />
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Bot className="h-6 w-6 text-blue-900" />
                   </div>
-                  <CardTitle className="text-xl text-gray-900">Mock Interview</CardTitle>
+                  <CardTitle className="text-lg text-gray-900">Mock Interview</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-center text-gray-600">
-                    Luyện tập phỏng vấn 1-1 với AI thông minh. Upload JD và nhận câu hỏi phù hợp với vị trí ứng tuyển.
+                  <CardDescription className="text-center text-gray-600 text-sm">
+                    Luyện tập phỏng vấn 1-1 với AI thông minh và nhận câu hỏi phù hợp.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div variants={fadeInUp}>
+              <Card className="h-full hover:shadow-lg transition-shadow duration-300 border-purple-100">
+                <CardHeader className="text-center pb-4">
+                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Zap className="h-6 w-6 text-purple-900" />
+                  </div>
+                  <CardTitle className="text-lg text-gray-900">Voice Interview</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-center text-gray-600 text-sm">
+                    Phỏng vấn voice real-time với AI như Google Meet. Trải nghiệm thực tế nhất.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -140,14 +156,14 @@ export default function HomePage() {
             <motion.div variants={fadeInUp}>
               <Card className="h-full hover:shadow-lg transition-shadow duration-300 border-blue-100">
                 <CardHeader className="text-center pb-4">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="h-8 w-8 text-blue-900" />
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="h-6 w-6 text-blue-900" />
                   </div>
-                  <CardTitle className="text-xl text-gray-900">Checklist Kiến thức</CardTitle>
+                  <CardTitle className="text-lg text-gray-900">Checklist Kiến thức</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-center text-gray-600">
-                    Tạo kế hoạch học tập cá nhân hóa và checklist kiến thức cần thiết cho từng vị trí công việc.
+                  <CardDescription className="text-center text-gray-600 text-sm">
+                    Tạo kế hoạch học tập cá nhân hóa và checklist kiến thức cần thiết.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -156,14 +172,14 @@ export default function HomePage() {
             <motion.div variants={fadeInUp}>
               <Card className="h-full hover:shadow-lg transition-shadow duration-300 border-blue-100">
                 <CardHeader className="text-center pb-4">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <FileText className="h-8 w-8 text-blue-900" />
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <FileText className="h-6 w-6 text-blue-900" />
                   </div>
-                  <CardTitle className="text-xl text-gray-900">Scan CV</CardTitle>
+                  <CardTitle className="text-lg text-gray-900">Scan CV</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-center text-gray-600">
-                    Phân tích độ phù hợp giữa CV và JD. Nhận gợi ý cải thiện để tăng cơ hội được chọn.
+                  <CardDescription className="text-center text-gray-600 text-sm">
+                    Phân tích độ phù hợp giữa CV và JD. Nhận gợi ý cải thiện.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -172,14 +188,14 @@ export default function HomePage() {
             <motion.div variants={fadeInUp}>
               <Card className="h-full hover:shadow-lg transition-shadow duration-300 border-blue-100">
                 <CardHeader className="text-center pb-4">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-8 w-8 text-blue-900" />
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Users className="h-6 w-6 text-blue-900" />
                   </div>
-                  <CardTitle className="text-xl text-gray-900">Forum Tuyển dụng</CardTitle>
+                  <CardTitle className="text-lg text-gray-900">Forum Tuyển dụng</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-center text-gray-600">
-                    Kết nối trực tiếp với nhà tuyển dụng. Tìm kiếm cơ hội việc làm phù hợp với kỹ năng của bạn.
+                  <CardDescription className="text-center text-gray-600 text-sm">
+                    Kết nối trực tiếp với nhà tuyển dụng và tìm kiếm cơ hội việc làm.
                   </CardDescription>
                 </CardContent>
               </Card>
